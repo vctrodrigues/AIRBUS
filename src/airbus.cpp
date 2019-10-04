@@ -125,7 +125,6 @@ int BST::maxDepth(Node * node) {
 
 int BST::mediana () {
     int pos = size % 2 == 0 ? size / 2 : ceil(size / 2.0);
-    std::cout << "MEDIAN IS AT " << pos << " BECAUSE SIZE IS " << size << " THEN IT'S " << enesimoElemento(pos) << std::endl;
     return enesimoElemento(pos);
 }
 
