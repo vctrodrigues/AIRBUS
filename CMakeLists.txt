@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project (Snaze VERSION 1.0.0 LANGUAGES CXX )
+project (Airbus VERSION 1.0.0 LANGUAGES CXX )
 
 #=== FINDING PACKAGES ===#
 

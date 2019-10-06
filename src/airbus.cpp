@@ -5,20 +5,27 @@
 
 using namespace airbus;
 
-Node * BST::insert (int key, Node * node, Node * parent) {
-    if (node == nullptr) {
+Node *BST::insert(int key, Node *node, Node *parent)
+{
+    if (node == nullptr)
+    {
         node = new Node(key, nullptr, nullptr, parent);
         size++;
-    } else if (key > node->key) {
-        node->right = insert (key, node->right, node);
-    } else if (key < node->key) {
-        node->left = insert (key, node->left, node);
+    }
+    else if (key > node->key)
+    {
+        node->right = insert(key, node->right, node);
+    }
+    else if (key < node->key)
+    {
+        node->left = insert(key, node->left, node);
     }
 
     return node;
 }
 
-Node * BST::search (int key, Node * node) {
+Node *BST::search(int key, Node *node)
+{
     if (node == nullptr || node->key == key)
         return node;
 
@@ -28,81 +35,89 @@ Node * BST::search (int key, Node * node) {
     return search(key, node->left);
 }
 
-int BST::nthInorder(Node * node, int ref) {
-    static int count = 0;  
-    static int key = -1;  
-         
-    if (node == nullptr) 
-        return key; 
+int BST::nthInorder(Node *node, int ref, int &count, int &key)
+{
+    if (node == nullptr)
+        return key;
 
-    if (count <= ref) { 
-        nthInorder(node->left, ref); 
-        count++; 
+    if (count <= ref)
+    {
+        nthInorder(node->left, ref, count, key);
+        count++;
 
-        if (count == ref) 
+        if (count == ref)
             key = node->key;
 
-        nthInorder(node->right, ref); 
-    } 
+        nthInorder(node->right, ref, count, key);
+    }
 
     return key;
 }
 
-int BST::posInorder(Node * node, int ref) {
-    static int count = 0;      
-    static int pos = -1;   
-    if (node == nullptr) 
-        return pos; 
+int BST::posInorder(Node *node, int ref, int &count, int &pos)
+{
+    if (node == nullptr)
+        return pos;
 
+    posInorder(node->left, ref, count, pos);
+    count++;
 
-    posInorder(node->left, ref); 
-    count++; 
-
-    if (node->key == ref) 
+    if (node->key == ref)
         pos = count;
 
-    posInorder(node->right, ref); 
-    
+    posInorder(node->right, ref, count, pos);
+
     return pos;
 }
 
+Node *BST::minValueNode(Node *node)
+{
+    Node *current = node;
 
-Node * BST::minValueNode (Node * node) { 
-    Node * current = node; 
-  
-    while (current && current->left != nullptr) 
-        current = current->left; 
-  
-    return current; 
-} 
+    while (current && current->left != nullptr)
+        current = current->left;
 
-Node * BST::remove (int key, Node * node) {
+    return current;
+}
+
+Node *BST::remove(int key, Node *node)
+{
     if (node == nullptr)
         return node;
-    
-    if (key < node->key) {
+
+    if (key < node->key)
+    {
         node->left = remove(key, node->left);
-    } else if (key > node->key) {
+    }
+    else if (key > node->key)
+    {
         node->right = remove(key, node->right);
-    } else {
+    }
+    else
+    {
         size--;
-        
-        if (node->left == nullptr && node->right == nullptr) {
+
+        if (node->left == nullptr && node->right == nullptr)
+        {
             delete node;
             return nullptr;
-        } else if (node->left == nullptr) {
-            Node * temp = node->right;
+        }
+        else if (node->left == nullptr)
+        {
+            Node *temp = node->right;
             temp->parent = node->parent;
-            delete node;            
+            delete node;
             return temp;
-        } else if (node->right == nullptr) {
-            Node * temp = node->left;
+        }
+        else if (node->right == nullptr)
+        {
+            Node *temp = node->left;
             temp->parent = node->parent;
             delete node;
             return temp;
         }
 
-        Node * sucessor = minValueNode (node->right);
+        Node *sucessor = minValueNode(node->right);
         node->key = sucessor->key;
         node->right = remove(sucessor->key, node->right);
         size++;
@@ -111,39 +126,47 @@ Node * BST::remove (int key, Node * node) {
     return node;
 }
 
-int BST::maxDepth(Node * node) {  
-    if (node == nullptr)  
-        return 0;  
-    else {  
-        int lDepth = maxDepth(node->left);  
-        int rDepth = maxDepth(node->right);  
-    
-        if (lDepth > rDepth) return(lDepth + 1);  
-        else return(rDepth + 1);  
-    }  
-}  
+int BST::maxDepth(Node *node)
+{
+    if (node == nullptr)
+        return 0;
+    else
+    {
+        int lDepth = maxDepth(node->left);
+        int rDepth = maxDepth(node->right);
 
-int BST::mediana () {
+        if (lDepth > rDepth)
+            return (lDepth + 1);
+        else
+            return (rDepth + 1);
+    }
+}
+
+int BST::mediana()
+{
     int pos = size % 2 == 0 ? size / 2 : ceil(size / 2.0);
     return enesimoElemento(pos);
 }
 
-bool BST::ehCheia() {
-    int n = pow(2, maxDepth(root))-1;
+bool BST::ehCheia()
+{
+    int n = pow(2, maxDepth(root)) - 1;
     int count = 0;
 
-    if (root != nullptr) {
+    if (root != nullptr)
+    {
         std::queue<Node *> q;
         q.push(root);
 
-        while (q.empty() == false) {        
-            Node * node = q.front();
+        while (q.empty() == false)
+        {
+            Node *node = q.front();
             count++;
             q.pop();
 
             if (node->left != nullptr)
                 q.push(node->left);
-            
+
             if (node->right != nullptr)
                 q.push(node->right);
         }
@@ -152,21 +175,24 @@ bool BST::ehCheia() {
     return count == n;
 }
 
-bool BST::ehCompleta() {
+bool BST::ehCompleta()
+{
     int count = 0;
 
-    if (root != nullptr) {
+    if (root != nullptr)
+    {
         std::queue<Node *> q;
         q.push(root);
 
-        while (q.empty() == false) {        
-            Node * node = q.front();
+        while (q.empty() == false)
+        {
+            Node *node = q.front();
             count++;
             q.pop();
 
             if (node->left != nullptr)
                 q.push(node->left);
-            
+
             if (node->right != nullptr)
                 q.push(node->right);
         }
@@ -175,7 +201,8 @@ bool BST::ehCompleta() {
     return maxDepth(root) == 1 + floor(log(count));
 }
 
-std::string BST::toString () {
+std::string BST::toString()
+{
     if (root == nullptr)
         return "";
 
@@ -183,14 +210,15 @@ std::string BST::toString () {
     q.push(root);
 
     std::stringstream stream;
-    while (q.empty() == false) {        
-        Node * node = q.front();
+    while (q.empty() == false)
+    {
+        Node *node = q.front();
         stream << node->key << " ";
         q.pop();
 
         if (node->left != nullptr)
             q.push(node->left);
-        
+
         if (node->right != nullptr)
             q.push(node->right);
     }
