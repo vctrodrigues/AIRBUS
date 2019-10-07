@@ -3,8 +3,11 @@
 ## Summary
 
 [1. Introduction](#1-introduction)
+
 [2. Compiling](#2-compiling)
+
 [3. Usage](#3-usage)
+
 [4. Authorship](#4-authorship)
 
 ## 1. Introduction
