@@ -1,30 +1,38 @@
-# AIRBUS
 
-## Summary
+# AIRBUS  
 
-[1. Introduction](#1-introduction)
+## Summary 
 
-[2. Compiling](#2-compiling)
+[1. Introdução](#introdução)
+[2. Compilação](#compilação)
+[3. Uso](#uso)
+[4. Autoria](#autoria)  
 
-[3. Usage](#3-usage)
+## 1. Introdução
 
-[4. Authorship](#4-authorship)
+O AIRBUS (**Á**rvore B**i**ná**r**ia de **Bus**ca) é uma implementação em C++ da estrutura de dados conhecida como _Binary Search Tree_. Nela, foram implementadas as operações básicas de inserção, busca e remoção assim como métodos para encontrar o enésimo elemento em ordem simétrica, descobrir a posição em ordem simétrica de um elemento, a mediana da árvore, descobrir se ela é cheia ou completa e gerar uma string com os elementos na ordem dos níveis. Nessa implementação, só é possível guardar valores inteiros.  
 
-## 1. Introduction
+## 2. Compilação
 
-## 2. Compiling
+Esse projeto pode ser compilado usando o [CMake](https://cmake.org). CMake é uma família de ferramentas de código aberto e multiplataforma criada para gerar, testar e empacotar programas. Basicamente, o CMake lê um script (`CMakeLists.txt`) com informações sobre o projeto e **cria um Makefile automaticamente**, tudo sob medida para as configurações do seu sistema. Depois disso, é só rodar o comando `make`, como de costume.
 
-é necessario instalar a ferramenta [CMake](cmake.org) no Computador
+Para instalar o CMake em seu computador, você pode baixar o arquivo correto na página oficial e instalar ou, caso esteja utilizando o Ubuntu, pode recorrer ao instalador de pacotes padrão (`apt-get install cmake`).
 
-Com a ferramente instalada basta abrir a basta do projeto no terminal e digitar os seguintes comandos
+Para compilar o projeto, você deve seguir os seguintes passos na página raiz:
 
-`cmake`
-`make`
+1. `cmake -G "Unix Makefiles" ..`: pede ao cmake para criar o Makefile baseado no script encontrado em `CMakeLists.txt`.
+2. `make`: compila o código do projeto e gera um executável dentro da pasta `./bin`.
 
-## 3. Usage
+## 3. Uso  
 
-Abrindo o terminal no diretorio do executavel digite `./bin/airbus <input_data_file_path> <input_commands_file_path>`.
+Para utilizar o programa, basta executar o seguinte comando na raiz do projeto:
 
-## 4. Authorship
+`./bin/airbus <caminho_para_dados> <caminho_para_comandos>`
 
-The authors of this project are Carlos Eduardo Alves Sarmento < [cealvesarmento@gmail.com](mailto:cealvesarmento@gmail.com) >, Ítalo Luiz Oqueres de Oliveira < [italoluis11@gmail.com](mailto:italoluis11@gmail.com) > and Victor Raphaell Vieira Rodrigues < [victorvieira89@gmail.com](mailto:victorvieira89@gmail.com) >.
+Sendo `<caminho_para_dados>` o caminho relativo para o arquivo que contém os valores iniciais da árvore e `<caminho_para_comandos>` o caminho relativo para o arquivo que contém os comandos a serem executados em cima da árvore inicial.
+
+**Atenção:** para que o arquivo de comandos funcione corretamente, é necessário que ele termine com um espaço ou uma quebra de linha.
+
+## 4. Autoria
+
+Os autores desse projeto são **Carlos Eduardo Alves Sarmento** _< cealvesarmento@gmail.com >_, **Ítalo Luiz Oqueres de Oliveira** _< italoluis11@gmail.com >_ e **Victor Raphaell Vieira Rodrigues** _< victorvieira89@gmail.com >_.
