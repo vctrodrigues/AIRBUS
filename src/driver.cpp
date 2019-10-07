@@ -168,5 +168,5 @@ int main(int argc, char *argv[])
     std::cout << ">>> ERRO: Comandos insuficientes. Use ./bin/airbus <arquivo_entrada> <arquivo_comandos>." << std::endl;
   }
 
-  std::cout << ">>> Finalizando programa..." << std::endl;
+  std::cout << ">>> Finalizando o programa..." << std::endl;
 }
