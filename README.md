@@ -37,4 +37,4 @@ Sendo `<caminho_para_dados>` o caminho relativo para o arquivo que contém os va
 
 ## 4. Autoria
 
-Os autores desse projeto são **Carlos Eduardo Alves Sarmento** _< cealvesarmento@gmail.com >_, **Ítalo Luiz Oqueres de Oliveira** _< italoluis11@gmail.com >_ e **Victor Raphaell Vieira Rodrigues** _< victorvieira89@gmail.com >_.
+Os autores desse projeto são **Carlos Eduardo Alves Sarmento** _< cealvesarmento@gmail.com >_ e **Victor Raphaell Vieira Rodrigues** _< victorvieira89@gmail.com >_.
